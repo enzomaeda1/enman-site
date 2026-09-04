@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ENMAN | Produtos Orientais</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1260a4;
+      --dark-blue: #07345d;
+      --red: #c82027;
+      --cream: #fffaf2;
+      --text: #202020;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--cream);
+    }
+
+    header {
+      background: white;
+      border-bottom: 1px solid #e8e8e8;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav {
+      max-width: 1150px;
+      height: 86px;
+      margin: auto;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      height: 68px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 600;
+    }
+
+    nav a:hover { color: var(--blue); }
+
+    .cart {
+      background: var(--red);
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 24px;
+      font-weight: bold;
+    }
+
+    .hero {
+      min-height: 520px;
+      background:
+        linear-gradient(90deg, rgba(4,29,52,.92), rgba(4,29,52,.55)),
+        radial-gradient(circle at 75% 50%, #2478b7, #062d51 70%);
+      color: white;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      width: min(1150px, 100%);
+      margin: auto;
+      padding: 70px 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 76px);
+      max-width: 700px;
+      line-height: 1;
+      margin: 12px 0 22px;
+    }
+
+    .hero p {
+      max-width: 570px;
+      font-size: 19px;
+      line-height: 1.7;
+      color: #e8f3fc;
+    }
+
+    .tag {
+      color: #8fd0ff;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .hero-buttons {
+      margin-top: 30px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 7px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: white;
+    }
+
+    .btn-secondary {
+      border: 1px solid white;
+      color: white;
+    }
+
+    section {
+      padding: 75px 24px;
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-title h2 {
+      color: var(--dark-blue);
+      font-size: 38px;
+      margin-bottom: 8px;
+    }
+
+    .section-title p { color: #777; }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .category {
+      background: white;
+      padding: 30px 20px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid #eee;
+      transition: .2s;
+    }
+
+    .category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.08);
+    }
+
+    .category .icon { font-size: 48px; margin-bottom: 15px; }
+
+    .category h3 { color: var(--dark-blue); margin-bottom: 6px; }
+    .category p { color: #777; font-size: 14px; }
+
+    .about {
+      background: #edf5fb;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about h2 {
+      color: var(--dark-blue);
+      font-size: 40px;
+      margin-bottom: 18px;
+    }
+
+    .about p {
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .highlight {
+      background: white;
+      padding: 35px;
+      border-left: 5px solid var(--red);
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.06);
+    }
+
+    .highlight strong {
+      display: block;
+      color: var(--red);
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .contact {
+      background: white;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .contact-card {
+      padding: 30px;
+      border: 1px solid #e7e7e7;
+      border-radius: 10px;
+    }
+
+    .contact-card h3 {
+      color: var(--dark-blue);
+      margin-bottom: 10px;
+    }
+
+    .contact-card p {
+      color: #666;
+      line-height: 1.7;
+    }
+
+    footer {
+      background: #062d51;
+      color: #d9e8f4;
+      padding: 35px 24px;
+      text-align: center;
+    }
+
+    footer strong { color: white; }
+
+    @media (max-width: 850px) {
+      nav { display: none; }
+      .nav { justify-content: center; }
+      .categories { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 500px) {
+      .categories { grid-template-columns: 1fr; }
+      .logo { max-width: 220px; height: auto; }
+      .hero { min-height: 480px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#">
+      <img src="logo-enman.jpg" class="logo" alt="ENMAN Produtos Orientais">
+    </a>
+
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#sobre">Sobre nós</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <a href="#produtos" class="cart">Ver produtos</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <div class="tag">Qualidade e tradição oriental</div>
+      <h1>ENMAN<br>Produtos Orientais</h1>
+      <p>
+        Encontre ingredientes, alimentos e produtos japoneses
+        para levar o melhor da culinária oriental para sua casa.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#produtos" class="btn btn-primary">Conheça nossos produtos →</a>
+        <a href="#sobre" class="btn btn-secondary">Conheça a Enman</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="produtos">
+    <div class="container">
+      <div class="section-title">
+        <h2>Nossos produtos</h2>
+        <p>Uma seleção especial para quem aprecia a culinária oriental.</p>
+      </div>
+
+      <div class="categories">
+        <div class="category">
+          <div class="icon">🍜</div>
+          <h3>Massas & Lamen</h3>
+          <p>Lamen, udon, soba e outras massas.</p>
+        </div>
+
+        <div class="category">
+          <div class="icon">🍣</div>
+          <h3>Produtos para Sushi</h3>
+          <p>Alga nori, arroz, wasabi e muito mais.</p>
+        </div>
+
+        <div class="category">
+          <div class="icon">🥢</div>
+          <h3>Molhos & Temperos</h3>
+          <p>Shoyu, missô, teriyaki e temperos.</p>
+        </div>
+
+        <div class="category">
+          <div class="icon">🍵</div>
+          <h3>Bebidas & Chás</h3>
+          <p>Chás, bebidas e opções orientais.</p>
+        </div>
+
+        <div class="category">
+          <div class="icon">🍘</div>
+          <h3>Snacks</h3>
+          <p>Salgadinhos, biscoitos e doces.</p>
+        </div>
+
+        <div class="category">
+          <div class="icon">🍚</div>
+          <h3>Arroz & Grãos</h3>
+          <p>Arroz japonês e outros grãos.</p>
+        </div>
+
+        <div class="category">
+          <div class="icon">🥟</div>
+          <h3>Congelados</h3>
+          <p>Gyoza, guioza e outras opções.</p>
+        </div>
+
+        <div class="category">
+          <div class="icon">🏮</div>
+          <h3>Outros</h3>
+          <p>Produtos especiais selecionados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="sobre">
+    <div class="container about-grid">
+      <div>
+        <h2>Tradição oriental perto de você.</h2>
+        <p>
+          A ENMAN é uma mercearia especializada em produtos orientais,
+          oferecendo variedade e qualidade para quem quer preparar
+          suas receitas favoritas em casa.
+        </p>
+        <p>
+          Nosso objetivo é aproximar você dos sabores e ingredientes
+          tradicionais da culinária japonesa e asiática.
+        </p>
+        <a href="#contato" class="btn btn-primary">Fale conosco</a>
+      </div>
+
+      <div class="highlight">
+        <strong>🇯🇵 Qualidade ENMAN</strong>
+        Produtos selecionados para você encontrar tudo o que precisa
+        em um só lugar.
+        <br><br>
+        <b>Atendimento:</b> Segunda a sábado, das 8h às 20h.
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contato">
+    <div class="container">
+      <div class="section-title">
+        <h2>Entre em contato</h2>
+        <p>Estamos esperando por você.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>📍 Nossa loja</h3>
+          <p>Rua da Liberdade, 123<br>Liberdade - São Paulo/SP</p>
+        </div>
+
+        <div class="contact-card">
+          <h3>📞 Atendimento</h3>
+          <p>(11) 91234-5678<br>contato@enman.com.br</p>
+        </div>
+
+        <div class="contact-card">
+          <h3>🕐 Horário</h3>
+          <p>Segunda a sábado: 8h às 20h<br>Domingo: 9h às 14h</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <strong>ENMAN — Produtos Orientais</strong>
+  <p>Qualidade e tradição oriental, mais perto de você.</p>
+  <br>
+  <small>© 2026 ENMAN. Site demonstrativo.</small>
+</footer>
+
+</body>
+</html>
